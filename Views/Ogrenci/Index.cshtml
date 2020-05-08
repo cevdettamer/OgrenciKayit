@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OgrenciKayit.Models.Table>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Öğrenci Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Öğrenci Ad
+        </th>
+        <th>
+            Öğrenci Soyad
+        </th>
+        <th>
+            Mail
+        </th>
+        <th>
+            Öğrenci Adres
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OgrAdres)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.OgrId }, htmlAttributes: new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Göster", "Details", new { id = item.OgrId }, htmlAttributes: new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.OgrId }, htmlAttributes: new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
